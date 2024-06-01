@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light shadow">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="www.facebook.com">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            x="0px"
+            y="0px"
+            width="100"
+            height="40"
+            viewBox="0 0 48 48"
+          >
+            <path
+              fill="#039be5"
+              d="M24 5A19 19 0 1 0 24 43A19 19 0 1 0 24 5Z"
+            ></path>
+            <path
+              fill="#fff"
+              d="M26.572,29.036h4.917l0.772-4.995h-5.69v-2.73c0-2.075,0.678-3.915,2.619-3.915h3.119v-4.359c-0.548-0.074-1.707-0.236-3.897-0.236c-4.573,0-7.254,2.415-7.254,7.917v3.323h-4.701v4.995h4.701v13.729C22.089,42.905,23.032,43,24,43c0.875,0,1.729-0.08,2.572-0.194V29.036z"
+            ></path>
+          </svg>
+        </a>
+        <form class="d-flex">
+          <input
+            class="form-control rounded-pill shadow-none"
+            type="search"
+            placeholder="Search"
+            aria-label="Search"
+          />
+        </form>
+        <button
+          class="navbar-toggler border-0 shadow-none"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon border-0"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Link</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero section -->
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3 col-lg-3">
+          <div>Left Pannel</div>
+        </div>
+        <div class="col-md-6 col-lg-6 text-center">
+          <div class="border mt-2">
+            <h3>Create Post</h3>
+            <div>
+              <div class="my-3">
+                <label for="userName">Username</label>
+                <input
+                  type="text"
+                  name="userName"
+                  id="userName"
+                  class="border-bottom border-0 bg-light rounded "
+                />
+              </div>
+              <div class="my-3">
+                <label for="shareDate me-auto">Share Date</label>
+                <input
+                  type="text"
+                  name="shareDate"
+                  id="shareDate"
+                  class="border-bottom border-0 bg-light rounded outline-0"
+                />
+              </div>
+              <div class="my-3">
+                <label for="postText">Post Text</label>
+                <input
+                  type="text"
+                  name="postText"
+                  id="postText"
+                  class="border-bottom border-0 bg-light rounded"
+                />
+              </div>
+              <div class="my-3">
+                <label for="imgURL">Image URL</label>
+                <input
+                  type="url"
+                  name="imgURL"
+                  id="imgURL"
+                  class="border-bottom border-0 bg-light rounded"
+                />
+              </div>
+              <button class="btn btn-primary w-75 m-2 shadow-none" onclick="post()">Post</button>
+            </div>
+          </div>
+
+          <div class="text-start mt-3">
+            <h4>Feed</h4>
+            <div id="userPost">
+                <!-- Data will be inserted dynamically -->
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3 col-lg-3 text-end">
+          <div>Right Pannel</div>
+        </div>
+      </div>
+    </div>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
+    <script type="module" src="app.js"></script>
+  </body>
+</html>
