@@ -128,7 +128,23 @@ function createPost(arr){
 
     // // Post footer
     var foot = document.createElement("footer")
-    foot.textContent = "Like"
+    foot.innerHTML += `<div>
+    <hr>
+    <div class="d-flex justify-content-between">
+      <button class="border-0 bg-body">
+        <i class="fa-regular fa-thumbs-up"></i>
+        <span>Like</span>
+      </button>
+      <button class="border-0 bg-body">
+        <i class="fa-regular fa-comment"></i>
+        <span>Comment</span>
+      </button>
+      <button class="border-0 bg-body">
+        <i class="fa-solid fa-share"></i>
+        <span>Share</span>
+      </button>
+    </div>
+  </div>`
     foot.setAttribute("class","px-3 py-2")
     main.appendChild(foot)
 
