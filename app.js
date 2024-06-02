@@ -28,6 +28,7 @@ var userName = document.getElementById("userName")
 var shareDate = document.getElementById("shareDate")
 var postText = document.getElementById("postText")
 var imgURL = document.getElementById("imgURL")
+var thanksMsg = document.getElementById("thanksMsg")
 
 
 // Create Post function
@@ -45,10 +46,18 @@ window.post = function(){
     }
 
     // Sending data to DB
-    userDataObj.key = push(ref(db, "All Post")).key
-    var reference = ref(db, `All Post/${userDataObj.key}`)
+    userDataObj.id = push(ref(db, "All Post")).key
+    var reference = ref(db, `All Post/${userDataObj.id}`)
     set(reference, userDataObj)
+    .then(function(){
+      console.log("Data sended successfully")
+    })
+    .catch(function(err){
+      console.log(err, "Error");
+    })
     
+    thanksMsg.innerHTML += `<p class="fw-bold text-success fs-4 mt-2 mb-0 pb-0">Thanks ${userName.value} for posting<p/>
+    <p class="fw-bold text-success fs-4 m-0 p-0">Check your post in the feed<p/>`
     console.log(userDataObj)
     
     // Setting input fields to be empty
@@ -60,99 +69,4 @@ window.post = function(){
     
 }
 
-var allDataObj = null;
-var arrayOfData;
-// Getting data from db
-function retrieveData(){
-  const reference = ref(db, "All Post/")
-  onValue(reference, function(data){
-      allDataObj = data.val()
-      arrayOfData = Object.values(allDataObj)
-      createPost(arrayOfData)
-      console.log("Array of data ",arrayOfData)
-  })
-}
-retrieveData()
 
-function createPost(arr){
-  var userPost = document.getElementById("userPost")
-  userPost.innerHTML = ""
-  console.log("Arr",arr)
-
-  console.log("Create Post function")
-
-  for(let i=0; i<arr.length; i++){
-
-    // console.log("arr[i]",arr[i])
-    console.log("arr[i]",arr[i].postText) // all oky
-
-    var main = document.createElement("div")
-    main.setAttribute("class","border shadow p-3 mb-3")
-
-    // Post header Content(img, name, date)
-    var headDiv = document.createElement("div")
-    headDiv.setAttribute("class","d-flex")
-
-    var uImg = document.createElement("img")
-    uImg.setAttribute('src', "https://img-cdn.pixlr.com/image-generator/history/65bb506dcb310754719cf81f/ede935de-1138-4f66-8ed7-44bd16efc709/medium.webp")
-    uImg.setAttribute('alt', "alt")
-    uImg.setAttribute('height', "50")
-    uImg.setAttribute('class', "rounded-circle")
-    headDiv.appendChild(uImg)
-
-    var d = document.createElement("div")
-    var uName = document.createElement("p")
-    uName.setAttribute("class","ms-2 cursor-pointer mb-0")
-    uName.textContent = arr[i].userName
-    d.appendChild(uName)
-
-    var pDate = document.createElement("p")
-    pDate.textContent = arr[i].shareDate
-    pDate.setAttribute("class","mb-1 ms-2 text-muted date")
-    d.appendChild(pDate)
-    headDiv.appendChild(d)
-    main.appendChild(headDiv)
-
-    // // Post content
-    var content = document.createElement("p")
-    content.textContent = arr[i].postText   // masla yhn ha
-    content.setAttribute('class',"p-3")
-    main.appendChild(content)
-
-    // // Post Image
-    var pImg = document.createElement("img")
-    pImg.setAttribute('src',`${arr[i].imgURL}`)
-    pImg.setAttribute('alt',"Alt text")
-    pImg.setAttribute('class',"img-fluid img-thumbnail")
-    main.appendChild(pImg)
-
-    // // Post footer
-    var foot = document.createElement("footer")
-    foot.innerHTML += `<div>
-    <hr>
-    <div class="d-flex justify-content-between">
-      <button class="border-0 bg-body">
-        <i class="fa-regular fa-thumbs-up"></i>
-        <span>Like</span>
-      </button>
-      <button class="border-0 bg-body">
-        <i class="fa-regular fa-comment"></i>
-        <span>Comment</span>
-      </button>
-      <button class="border-0 bg-body">
-        <i class="fa-solid fa-share"></i>
-        <span>Share</span>
-      </button>
-    </div>
-  </div>`
-    foot.setAttribute("class","px-3 py-2")
-    main.appendChild(foot)
-
-    // Appended main-div into HTML tag
-    userPost.appendChild(main)
-    
-  }
-
-}
-
-createPost(arrayOfData)
