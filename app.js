@@ -65,6 +65,7 @@ window.post = function(){
     shareDate.value = ""
     postText.value = ""
     imgURL.value = ""
+
   }
     
 }
